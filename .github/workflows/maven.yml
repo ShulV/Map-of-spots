@@ -39,9 +39,11 @@ jobs:
         cd ./test-project/
         ls -a
     - name: 📂 Sync Files
-      uses: SamKirkland/web-deploy@v1 # GitHub action, написанное другим человеком для деплоя по ssh
+      uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        target-server: ${{ secrets.FTP_IP_ADDRESS }}
-        remote-user: ${{ secrets.FTP_REMOTE_USER }}
-        private-ssh-key: ${{ secrets.FTP_SSH_KEY }}
-        destination-path: ./
+        server: ${{ secrets.FTP_IP_ADDRESS }}
+        username: ${{ secrets.FTP_REMOTE_USER }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        destination-path: ~/Shulpov/spots-project/
+        protocol: ftps
+        port: 8080
