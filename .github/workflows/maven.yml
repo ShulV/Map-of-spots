@@ -32,18 +32,26 @@ jobs:
       run: ls -a
     - name: Build with Maven
       run: mvn -f ./test-project/ --batch-mode --update-snapshots verify
-    - name: Creating directory and copying .jar
-      run: |
-        mkdir staging && cp ./test-project/target/*.jar staging
-        ls -a
-        cd ./test-project/
-        ls -a
-    - name: 📂 Sync Files
-      uses: SamKirkland/FTP-Deploy-Action@4.3.3
+    - name: Archive prod artifact
+      uses: actions/upload-artifact@dev
       with:
-        server: ${{ secrets.FTP_IP_ADDRESS }}
-        username: ${{ secrets.FTP_REMOTE_USER }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        destination-path: ~/Shulpov/spots-project/
-        protocol: ftps
-        port: 8080
+        name: dist
+        path: dist
+
+  deploy:
+    name: Deploy :rocket:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@dev
+        with:
+          name: dist
+          name: dist
+      - name: Sync files to host
+        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        with:
+          server: ${{ secrets.FTP_IP_ADDRESS }}
+          username: ${{ secrets.FTP_REMOTE_USER }}
+          password: ${{ FTP.PASSWORD }}
+    
