@@ -10,7 +10,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "main", "dev" ]
   pull_request:
     branches: [ "main" ]
 
@@ -55,5 +55,5 @@ jobs:
           username: ${{ secrets.FTP_REMOTE_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 8080
-          protocol: sftp
+          protocol: ftps
     
