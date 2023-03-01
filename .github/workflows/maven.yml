@@ -34,5 +34,7 @@ jobs:
       run: mvn -f ./test-project/ --batch-mode --update-snapshots verify
     - name: Creating directory and copying .jar
       run: |
-        mkdir staging && cp target/*.jar staging
+        mkdir staging && cp .test-project/target/*.jar staging
+        ls -a
+        cd ./test-project/
         ls -a
