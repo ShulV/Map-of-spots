@@ -55,4 +55,5 @@ jobs:
           username: ${{ secrets.FTP_REMOTE_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 8080
+          protocol: sftp
     
