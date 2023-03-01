@@ -39,7 +39,7 @@ jobs:
         path: dist
 
   deploy:
-    name: Deploy :rocket:
+    name: Deploy
     needs: build
     runs-on: ubuntu-latest
     steps:
