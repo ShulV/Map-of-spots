@@ -1,5 +1,3 @@
-
-
 # This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
 
@@ -23,9 +21,10 @@ jobs:
 
     steps:
     - name: Copying project to runner
-      uses: actions/checkout@v3 # копирует проект в runner
+      uses: actions/checkout@v3 # РєРѕРїРёСЂСѓРµС‚ РїСЂРѕРµРєС‚ РІ runner
     - name: Set up JDK 17
-      uses: actions/setup-java@v3 # конфигурирует Eclipse 17 JDK
+      uses: actions/setup-java@v3 # РєРѕРЅС„РёРіСѓСЂРёСЂСѓРµС‚ Eclipse 17 JDK
+      run: echo ls -a
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -36,4 +35,3 @@ jobs:
       run: |
         mkdir staging && cp target/*.jar staging
         echo ls -a
-
