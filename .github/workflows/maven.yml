@@ -53,5 +53,5 @@ jobs:
         with:
           server: ${{ secrets.FTP_IP_ADDRESS }}
           username: ${{ secrets.FTP_REMOTE_USER }}
-          password: ${{ FTP.PASSWORD }}
+          password: ${{ secrets.FTP_PASSWORD }}
     
