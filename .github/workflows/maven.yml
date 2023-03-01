@@ -47,7 +47,7 @@ jobs:
         uses: actions/checkout@dev
         with:
           name: dist
-          name: dist
+          path: dist
       - name: Sync files to host
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
