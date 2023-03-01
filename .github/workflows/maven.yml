@@ -38,3 +38,10 @@ jobs:
         ls -a
         cd ./test-project/
         ls -a
+    - name: 📂 Sync Files
+      uses: SamKirkland/web-deploy@v1 # GitHub action, написанное другим человеком для деплоя по ssh
+      with:
+        target-server: ${{ secrets.FTP_IP_ADDRESS }}
+        remote-user: ${{ secrets.FTP_REMOTE_USER }}
+        private-ssh-key: ${{ secrets.FTP_SSH_KEY }}
+        destination-path: ./
